@@ -64,15 +64,14 @@ namespace TxtApplication
 			if (TextEditor.Text.Length == 0)
 			{
 				OpenFileDialog.ShowDialog();
+
 				return;
 			}
 
 			if (MessageBox.Show(text: CurrentTextWillMissing, caption: AppTitle, buttons: YesNo,
 								icon: Information)
 				== Yes)
-			{
 				OpenFileDialog.ShowDialog();
-			}
 			else
 				SaveFileDialog.ShowDialog();
 		}
@@ -140,7 +139,7 @@ namespace TxtApplication
 		/// <param name="args"></param>
 		private void OpenFileDialog_FileOk(object sender, CancelEventArgs e)
 		{
-				TextEditor.LoadFile(OpenFileDialog.FileName, RichTextBoxStreamType.PlainText);
+			TextEditor.LoadFile(path: OpenFileDialog.FileName, fileType: RichTextBoxStreamType.PlainText);
 		}
 
 		private void SaveAsPdfFile_FileOk(object sender, CancelEventArgs e)
