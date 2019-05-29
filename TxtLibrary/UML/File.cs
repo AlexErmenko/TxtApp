@@ -1,37 +1,58 @@
 using System;
+using System.IO;
 
 namespace TxtLibrary.UML
 {
 	public class File : IFile
 	{
-		public void Open()
+		public FileStream Open(string path)
 		{
-			throw new NotImplementedException();
+			using (var fs  = new FileStream(path,FileMode.Open))
+			{
+				return fs;
+			}
 		}
 
-		public void Read()
+		public string Read(string path)
 		{
-			throw new NotImplementedException();
+			using (var fs = new FileStream(path, FileMode.Open))
+			{
+				using (var sr = new StreamReader(fs))
+				{
+					return sr.ReadToEnd();
+				}
+			}
+
 		}
 
-		public void Write()
+		public void Write(string path)
 		{
-			throw new NotImplementedException();
+			using (var fs = new FileStream(path, FileMode.Open))
+			{
+				using (var sr = new  StreamWriter(fs))
+				{
+					sr .Write(path);
+				}
+			}
+
 		}
 
 		public void Close()
 		{
-			throw new NotImplementedException();
+
+		}
+
+		public void Save(string type, string pathToSave)
+		{
+
 		}
 
 		public void Save(string type)
 		{
-			throw new NotImplementedException();
 		}
 
 		public void Save()
 		{
-			throw new NotImplementedException();
 		}
 
 		public string Type     { get; set; }

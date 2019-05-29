@@ -49,8 +49,15 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UML\File.cs" />
+    <Compile Include="UML\IFile.cs" />
+    <Compile Include="UML\ITextWorker.cs" />
+    <Compile Include="UML\PdfFile.cs" />
+    <Compile Include="UML\TextWorker.cs" />
+    <Compile Include="UML\TxtFile.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram2.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

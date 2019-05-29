@@ -6,17 +6,14 @@ namespace TxtLibrary.UML
 	{
 		public void Convert(IFile file)
 		{
-			throw new NotImplementedException();
 		}
 
 		public void Read(IFile file)
 		{
-			throw new NotImplementedException();
 		}
 
 		public void Write(IFile file)
 		{
-			throw new NotImplementedException();
 		}
 	}
 }

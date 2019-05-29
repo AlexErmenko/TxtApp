@@ -1,14 +1,16 @@
+using System.IO;
+
 namespace TxtLibrary.UML
 {
 	public interface IFile
 	{
 		string Type     { get; set; }
 		string Encoding { get; set; }
-		void   Open();
-		void   Read();
-		void   Write();
+		FileStream Open(string path);
+		string Read(string path);
+		void   Write(string path);
 		void   Close();
-		void   Save(string type);
-		void   Save();
+		void   Save(string type, string pathToSave);
+		void   Save(string pathToSave);
 	}
 }

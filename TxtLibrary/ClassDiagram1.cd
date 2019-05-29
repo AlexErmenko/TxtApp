@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="TxtLibrary.UML.File" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="0.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAIAAAAAAAAAAggAAAAAAAAQAAAAGAAAA=</HashCode>
+      <FileName>UML\File.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TxtLibrary.UML.PdfFile" BaseTypeListCollapsed="true">
+    <Position X="7" Y="5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAIAAAAAAAAAAggAAAAAAAAQAAAAGAAAA=</HashCode>
+      <FileName>UML\PdfFile.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TxtLibrary.UML.TextWorker" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAgAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>UML\TextWorker.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TxtLibrary.UML.TxtFile" BaseTypeListCollapsed="true">
+    <Position X="1" Y="4.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAIAAAAAAAAAAggAAAAAAAAQAAAAGAAAA=</HashCode>
+      <FileName>UML\TxtFile.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="TxtLibrary.UML.IFile">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAIAAAAAAAAAAggAAAAAAAAQAAAAGAAAA=</HashCode>
+      <FileName>UML\IFile.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TxtLibrary.UML.ITextWorker">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAgAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>UML\ITextWorker.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

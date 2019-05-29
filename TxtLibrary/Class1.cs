@@ -1,7 +1,5 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
-
 using static System.Drawing.FontFamily;
 using static System.Drawing.FontStyle;
 
@@ -24,5 +22,7 @@ namespace TxtLibrary
 		}
 	}
 
-	public class Class1 { }
+	public class Class1
+	{
+	}
 }

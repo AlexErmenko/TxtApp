@@ -2,39 +2,34 @@ using System;
 
 namespace TxtLibrary.UML
 {
-	public class PdfFile : IFile
+	public class PdfFile : File, IFile
 	{
-		public string Type     { get; set; }
-		public string Encoding { get; set; }
+		public new string Type { get; set; }
+		public new string Encoding { get; set; }
 
-		public void Open()
+		public void Open(string path)
 		{
-			throw new NotImplementedException();
 		}
 
-		public void Read()
+		public void Read(string path)
 		{
-			throw new NotImplementedException();
 		}
 
-		public void Write()
+		public void Write(string path)
 		{
-			throw new NotImplementedException();
 		}
 
 		public void Close()
 		{
-			throw new NotImplementedException();
 		}
 
 		public void Save(string type)
 		{
-			throw new NotImplementedException();
 		}
 
 		public void Save()
 		{
-			throw new NotImplementedException();
 		}
+
 	}
 }
