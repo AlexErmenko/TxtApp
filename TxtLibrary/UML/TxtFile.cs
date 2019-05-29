@@ -39,16 +39,10 @@ namespace TxtLibrary.UML
 			}
 		}
 
-		public void Close()
+
+		public void Save(string type,string filePath)
 		{
 		}
 
-		public void Save(string type)
-		{
-		}
-
-		public void Save()
-		{
-		}
 	}
 }

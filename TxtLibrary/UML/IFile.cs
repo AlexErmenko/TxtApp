@@ -9,8 +9,6 @@ namespace TxtLibrary.UML
 		FileStream Open(string path);
 		string Read(string path);
 		void   Write(string path);
-		void   Close();
 		void   Save(string type, string pathToSave);
-		void   Save(string pathToSave);
 	}
 }

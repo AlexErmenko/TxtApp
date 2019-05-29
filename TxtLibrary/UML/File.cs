@@ -12,7 +12,7 @@ namespace TxtLibrary.UML
 				return fs;
 			}
 		}
-
+		                         
 		public string Read(string path)
 		{
 			using (var fs = new FileStream(path, FileMode.Open))
@@ -37,23 +37,13 @@ namespace TxtLibrary.UML
 
 		}
 
-		public void Close()
-		{
-
-		}
 
 		public void Save(string type, string pathToSave)
 		{
-
+			File f = new File();
+			f.Save(type,pathToSave);
 		}
 
-		public void Save(string type)
-		{
-		}
-
-		public void Save()
-		{
-		}
 
 		public string Type     { get; set; }
 		public string Encoding { get; set; }
