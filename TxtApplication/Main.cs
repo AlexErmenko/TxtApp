@@ -1,26 +1,33 @@
 ﻿using System;
 using System.ComponentModel;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
+
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+
 using TxtLibrary;
+
+using static System.Diagnostics.Process;
 using static System.IO.File;
 using static System.Windows.Forms.DialogResult;
 using static System.Windows.Forms.MessageBoxButtons;
 using static System.Windows.Forms.MessageBoxIcon;
+
 using static TxtApplication.Properties.Resources;
+
 using Font = System.Drawing.Font;
 
 namespace TxtApplication
 {
 	/// <summary>
-	///     Головне вікно демонстраційної програми
+	///   Головне вікно демонстраційної програми
 	/// </summary>
 	public partial class Main : Form
 	{
 		/// <summary>
-		///     Ініціалізація візуальних компонентів та нормалізація зовнішнього вигляду форми
+		///   Ініціалізація візуальних компонентів та нормалізація зовнішнього вигляду форми
 		/// </summary>
 		public Main()
 		{
@@ -29,7 +36,7 @@ namespace TxtApplication
 		}
 
 		/// <summary>
-		///     Створення текстового документа
+		///   Створення текстового документа
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
@@ -50,7 +57,7 @@ namespace TxtApplication
 		}
 
 		/// <summary>
-		///     Відкриття файлу
+		///   Відкриття файлу
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
@@ -65,14 +72,14 @@ namespace TxtApplication
 
 			if (MessageBox.Show(text: CurrentTextWillMissing, caption: AppTitle, buttons: YesNo,
 								icon: Information)
-			== Yes)
+				== Yes)
 				OpenFileDialog.ShowDialog();
 			else
 				SaveFileDialog.ShowDialog();
 		}
 
 		/// <summary>
-		///     Діалогове вікно вибори шрифта
+		///   Діалогове вікно вибори шрифта
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
@@ -84,52 +91,89 @@ namespace TxtApplication
 				Font         font                   = null;
 				if (result == DialogResult.OK) font = FontDialog.Font;
 				TextEditor.Font = font;
-			}
-			else
+			} else
 			{
 				MessageBox.Show(text: FontMessage, caption: "", buttons: OKCancel,
 								icon: Information);
 			}
 		}
 
+		private void CrPDF(string filePathTxt, string filePathPdf)
+		{
+			var rdr = new StreamReader(path: $"{filePathTxt}", encoding: Encoding.UTF8);
+
+			//Create a New instance on Document Class
+
+			var doc = new Document();
+
+			//Create a New instance of PDFWriter Class for Output File
+
+			PdfWriter.GetInstance(document: doc, os: new FileStream(path: $"{filePathPdf}", mode: FileMode.Create));
+
+			//Open the Document
+
+			doc.Open();
+
+			//Add the content of Text File to PDF File
+
+			doc.Add(element: new Paragraph(str: rdr.ReadToEnd()));
+
+			//Close the Document
+
+			doc.Close();
+
+			//Open the Converted PDF File
+
+			Start(fileName: $"{filePathPdf}");
+		}
+
 		/// <summary>
-		///     Збереження файлу у форматі PDF
+		///   Збереження файлу у форматі PDF
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void SaveAsPdf_Click(object sender, EventArgs e) => SaveAsPdfFile.ShowDialog();
+		private void SaveAsPdf_Click(object sender, EventArgs e)
+		{
+			DialogResult result = SaveAsPdfFile.ShowDialog();
+
+			if (result == DialogResult.OK)
+			{
+				string path    = OpenFileDialog.FileName;
+				string pdfPath = Path.GetFileNameWithoutExtension(path: path);
+			}
+		}
 
 		/// <summary>
-		///     Збереження поточної інформації
+		///   Збереження поточної інформації
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		private void button1_Click(object sender, EventArgs e) => SaveFileDialog.ShowDialog();
 
 		/// <summary>
-		///     Встановлення шрифта
+		///   Встановлення шрифта
 		/// </summary>
 		/// <param name="_"></param>
 		/// <param name="args"></param>
 		private void FontDialog_Apply(object _, EventArgs e) => TextEditor.Font = FontDialog.Font;
 
 		/// <summary>
-		///     Збереження поточної інформації до файлу
+		///   Збереження поточної інформації до файлу
 		/// </summary>
 		/// <param name="_"></param>
 		/// <param name="args"></param>
 		private void SaveFileDialog_FileOk(object sender, CancelEventArgs e)
 		{
-			var filePath = SaveFileDialog.FileName;
+			string filePath = SaveFileDialog.FileName;
 			if (!Exists(path: filePath)) Create(path: filePath).Close();
 
 			using var fs = new FileStream(path: filePath, mode: FileMode.Open);
-			using var sw = new StreamWriter(stream: fs);
+			using var sw = new StreamWriter(stream: fs, encoding: Encoding.Default);
 			sw.Write(value: TextEditor.Text);
 		}
 
 		/// <summary>
-		///     Завантаження тексту з файлу до редактора
+		///   Завантаження тексту з файлу до редактора
 		/// </summary>
 		/// <param name="_"></param>
 		/// <param name="args"></param>
@@ -138,8 +182,7 @@ namespace TxtApplication
 			TextEditor.LoadFile(path: OpenFileDialog.FileName, fileType: RichTextBoxStreamType.PlainText);
 		}
 
-
-		void Convert(string filePath, string fileOut)
+		/*void Convert(string filePath, string fileOut)
 		{
 			var sr = new StreamReader(filePath);
 			var document = new Document();
@@ -148,15 +191,15 @@ namespace TxtApplication
 			document.Add(new Paragraph(sr.ReadToEnd()));
 			document.Close();
 			System.Diagnostics.Process.Start(fileOut);
-		}
+		}*/
 
 		private void SaveAsPdfFile_FileOk(object sender, CancelEventArgs e)
 		{
-			var       path = SaveAsPdfFile.FileName;
+			/*var       path = SaveAsPdfFile.FileName;
 
 			var outPath = path.Replace(".txt", ".pdf");
 
-			Convert(path, outPath);
+			// Convert(path, outPath);
 
 			using var fs   = new FileStream(path: path, mode: FileMode.Create);
 
@@ -167,7 +210,7 @@ namespace TxtApplication
 			document.Open();
 			document.Add(element: new Paragraph(str: TextEditor.Text));
 			document.Close();
-			pdfWriter.Close();
+			pdfWriter.Close();*/
 		}
 	}
 }

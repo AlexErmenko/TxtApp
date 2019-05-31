@@ -1,4 +1,5 @@
 ﻿using System;
+
 using static System.Windows.Forms.Application;
 
 namespace TxtApplication
@@ -6,7 +7,7 @@ namespace TxtApplication
 	internal static class Program
 	{
 		/// <summary>
-		///     Главная точка входа для приложения.
+		///   Главная точка входа для приложения.
 		/// </summary>
 		[STAThread]
 		private static void Main()

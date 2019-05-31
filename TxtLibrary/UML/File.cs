@@ -7,43 +7,30 @@ namespace TxtLibrary.UML
 	{
 		public FileStream Open(string path)
 		{
-			using (var fs  = new FileStream(path,FileMode.Open))
-			{
-				return fs;
-			}
+			using (var fs = new FileStream(path: path, mode: FileMode.Open)) return fs;
 		}
-		                         
+
 		public string Read(string path)
 		{
-			using (var fs = new FileStream(path, FileMode.Open))
+			using (var fs = new FileStream(path: path, mode: FileMode.Open))
 			{
-				using (var sr = new StreamReader(fs))
-				{
-					return sr.ReadToEnd();
-				}
+				using (var sr = new StreamReader(stream: fs)) return sr.ReadToEnd();
 			}
-
 		}
 
 		public void Write(string path)
 		{
-			using (var fs = new FileStream(path, FileMode.Open))
+			using (var fs = new FileStream(path: path, mode: FileMode.Open))
 			{
-				using (var sr = new  StreamWriter(fs))
-				{
-					sr .Write(path);
-				}
+				using (var sr = new StreamWriter(stream: fs)) sr.Write(value: path);
 			}
-
 		}
-
 
 		public void Save(string type, string pathToSave)
 		{
-			File f = new File();
-			f.Save(type,pathToSave);
+			var f = new File();
+			f.Save(type: type, pathToSave: pathToSave);
 		}
-
 
 		public string Type     { get; set; }
 		public string Encoding { get; set; }

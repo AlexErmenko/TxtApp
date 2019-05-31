@@ -1,3 +1,5 @@
+using System;
+
 namespace TxtLibrary.UML
 {
 	public interface ITextWorker

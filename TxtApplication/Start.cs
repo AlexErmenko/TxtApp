@@ -1,4 +1,7 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
+
+using TxtLibrary;
 
 namespace TxtApplication
 {
@@ -7,6 +10,11 @@ namespace TxtApplication
 		public Start()
 		{
 			InitializeComponent();
+		}
+
+		private void Button1_Click(object sender, EventArgs e)
+		{
+			this.Nav(to: new Main());
 		}
 	}
 }
